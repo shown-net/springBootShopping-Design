@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SalesManMapper">
+    <select id="getUserBrowseLog" resultType="com.example.pojo.BrowserLog">
+        select *
+        from browse_log
+        where product_ID in (select id
+                            from product
+                            where salesMan_ID = #{accountID})
+    </select>
+</mapper>

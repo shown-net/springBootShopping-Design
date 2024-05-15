@@ -1,0 +1,38 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 2791369401@qq.com
+    password: uiqjmchdcazkdchb
+    port: 587
+    default-encoding: utf-8
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          socketFactory.class: javax.net.ssl.SSLSocketFactory
+          starttls:
+            enable: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/page_designer
+    username: root
+    password: 20031127xuhaoen
+  data:
+    redis:
+      host:localhost
+      port:6379
+
+server:
+  port: 6544
+
+
+mybatis:
+  configuration:
+    #开启驼峰命名和下划线命名自动转换
+    map-underscore-to-camel-case: true
+    #让MyBatis将日志信息输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#IP:8.134.116.81
+

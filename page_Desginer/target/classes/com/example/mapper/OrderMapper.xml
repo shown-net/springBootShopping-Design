@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.OrderMapper">
+
+    <delete id="deleteOrder">
+        delete from orders where id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="getInfoByUser" resultType="com.example.pojo.Order">
+        select id,
+               price,
+               kind,
+               user_id      as userID,
+               product_ID   as productID,
+               product_Name as productName,
+               quantity,
+               buy_time     as buyTime
+        from orders
+        where user_id = #{userID}
+    </select>
+    <select id="getInfoBySaleMan" resultType="com.example.pojo.Order">
+        SELECT
+            o.id,
+            o.price,
+            o.kind,
+            o.user_id AS userID,
+            o.product_ID AS productID,
+            o.product_Name AS productName,
+            o.quantity,
+            o.buy_time AS buyTime
+        FROM
+            orders o
+        WHERE
+            o.product_ID IN (
+            SELECT p.id
+            FROM product p
+            WHERE p.salesMan_ID = #{salesManID}
+            )
+    </select>
+    <select id="getStatisticsBySalesMan" resultType="com.example.pojo.Order">
+        SELECT
+            o.product_ID,
+            p.name as productName,
+            SUM(o.quantity) as quantity,
+            SUM(o.price * o.quantity) as price
+        FROM
+            orders o
+    JOIN
+        product p ON o.product_ID = p.id
+        WHERE
+            p.salesMan_ID = #{salesManID}
+        GROUP BY
+            o.product_ID,
+            p.name
+    </select>
+    <select id="getStatisticsByManager" resultType="com.example.pojo.Product">
+        SELECT kind,
+               SUM(quantity)         as quantity,
+               SUM(price * quantity) as price
+        FROM orders
+        group by kind
+    </select>
+</mapper>
