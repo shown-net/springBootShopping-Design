@@ -15,10 +15,10 @@ public class Product {
     private Long id;
     private Integer salesManID;
     private String kind;
+    private Integer quantity;
     private String name;
     private Float price;
     private String imageUrl;
-    private Integer quantity;
     @State
     private String state;
 

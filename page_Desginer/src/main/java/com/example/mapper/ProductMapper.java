@@ -18,8 +18,8 @@ public interface ProductMapper {
     public Integer getState(Integer productID);
 
     //插入新增的商品信息
-    @Insert("insert into product (salesMan_ID,kind,name,price,image_Url,quantity,state) " +
-            "values(#{salesManID},#{kind},#{name},#{price},#{imageUrl},#{quantity},#{state})")
+    @Insert("insert into product (salesMan_ID,kind,name,price,image_Url,state) " +
+            "values(#{salesManID},#{kind},#{name},#{price},#{imageUrl},#{state})")
     public void add_Product(Product product);
 
     //根据提供的商品名返回商品数据
@@ -33,7 +33,7 @@ public interface ProductMapper {
     List<Product> getInfoBySalesMan(Integer salesManID);
 
     //更新商品信息(根据商品ID)
-    @Update("update product set name=#{name},kind=#{kind},price=#{price},quantity=#{quantity},state=#{state}  " +
+    @Update("update product set name=#{name},kind=#{kind},price=#{price},state=#{state}  " +
             " where id=#{id} and salesMan_ID=#{salesManID}")
     public void InfoUpdate(Product product);
 

@@ -13,7 +13,6 @@ import java.util.Map;
 @Aspect
 @Component
 public class RoleCheckAspect {
-
     @Before("@annotation(roleCheck)")
     public void doBefore(JoinPoint joinPoint, RoleCheck roleCheck) throws AccessDeniedException {
         // 获取方法上定义的角色

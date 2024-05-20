@@ -6,7 +6,7 @@
     <select id="getUserBrowseLog" resultType="com.example.pojo.BrowserLog">
         select *
         from browse_log
-        where product_ID in (select id
+        where id in (select id
                             from product
                             where salesMan_ID = #{accountID})
     </select>

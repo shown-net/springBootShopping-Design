@@ -46,23 +46,16 @@ export default {
     const targetCount = ref(0);
     //
     const baseImageUrl = import.meta.env.VITE_APP_BASE_URL + '/images/download/'
-    // 该商品的浏览时长
-    const browseTime = ref(0)
     // 用来存储计时器ID
     let timer;
-
+    // 该商品的浏览时长
+    const browseTime = ref(0)
     // 启动计时器
     const startTimer = () => {
       timer = setInterval(() => {
         browseTime.value++; // 每秒增加1
       }, 1000);
     };
-
-    // 停止计时器
-    const stopTimer = () => {
-      clearInterval(timer);
-    };
-
     // 发送浏览时长到后端
     const sendBrowseTime = () => {
       if (browseTime.value >= 5) {
@@ -73,6 +66,10 @@ export default {
         })
       }
     }
+    // 停止计时器
+    const stopTimer = () => {
+      clearInterval(timer);
+    };
     // 组件创建时加载本地的购物车数据
     onMounted(() => {
       startTimer();

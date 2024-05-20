@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getInfoBy_name(String accountName) {
-        //不返回salesMan_ID和quantity字段
+        //不返回salesMan_ID和字段
         return productMapper.InfoSelect(accountName);
     }
 
@@ -49,7 +49,6 @@ public class ProductServiceImpl implements ProductService {
     public Result getInfoByproductID(Integer productID) {
         Product product = productMapper.getInfoByproductID(productID);
         if (product != null) {
-            product.setQuantity(null);
             return Result.success(product);
         } else {
             return Result.error("不存在该商品");

@@ -11,13 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 @Service
 public class MailServiceImpl implements MailService {
-
     @Autowired
     private JavaMailSenderImpl javaMailSender;
-
     @Value("${spring.mail.username}")
     private String sendMailer;
-
     @Override
     public void sendTextMailMessage(String to,String subject,String text){
         try {
@@ -36,7 +33,6 @@ public class MailServiceImpl implements MailService {
             //发送邮件
             javaMailSender.send(mimeMessageHelper.getMimeMessage());
             /*            System.out.println("发送邮件成功："+sendMailer+"->"+to);*/
-
         } catch (MessagingException e) {
             System.out.println("发送邮件失败："+e.getMessage());
         }

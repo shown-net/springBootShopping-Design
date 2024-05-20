@@ -23,8 +23,6 @@ public class AccountSessionServiceImpl implements AccountSessionService {
         }
         return ipAddress;
     }
-
-
     @Override
     public void setLoginRecord(Integer accountID, String accountType, String IpAddress) {
         if (accountSessionMapper.getNotLogOut(accountID, accountType, IpAddress) == 0) {
@@ -35,11 +33,8 @@ public class AccountSessionServiceImpl implements AccountSessionService {
             accountSessionMapper.updateLoginRecord(accountID, accountType, IpAddress);
         }
     }
-
     @Override
     public void setLogoutRecord(Integer accountID, String accountType, String IpAddress) {
         accountSessionMapper.updateLogoutRecord(accountID, accountType, IpAddress);
     }
-
-
 }

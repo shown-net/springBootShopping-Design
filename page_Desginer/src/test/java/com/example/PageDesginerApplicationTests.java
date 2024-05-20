@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
 class PageDesginerApplicationTests {
     @Test
     public void userProfileTest() throws JsonProcessingException {
-        System.out.println(Math.round((double) (9499 / 6) * 100.0) / 100.0);
+        System.out.println(System.getProperty("user.dir")+ File.separator);
 
     }
     @Test

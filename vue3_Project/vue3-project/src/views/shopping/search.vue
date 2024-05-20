@@ -74,7 +74,7 @@ export default {
         kindList = []
       }
       // 根据商品种类更新后端筛选后的商品列表
-      instance.post("/product/getInfoByUser", kindList)
+      instance.post("/product/getProductInfo", kindList)
           .then(result => {
             // result = Result类对象，其data字段为Product类对象列表
             product_List.value = result.data
